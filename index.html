@@ -14,48 +14,56 @@
     <header class="head">
         <nav class="nav-bar">
             <list>
-                <ul><a onclick="showGalery()" >gallery</a></ul>
-                <ul><a onclick="hideGallery()" >editor</a></ul>
+                <ul><a onclick="showGalery()">gallery</a></ul>
+                <ul><a onclick="hideGallery()">editor</a></ul>
             </list>
         </nav>
     </header>
-    
+
+
 
 
     <section class="gallery grid">
+        <input type="">
+        <button onclick="onSave(this)" class="btn-down">upload</button>
         <h3 class="head">gallery</h3>
-        
+
     </section>
-    
+
     <section class="meme-editor">
-        
+
         <h3>meme-editor</h3>
-        
+        <!-- upload img -->
+        <div class="upload-img">
+            <img id="output_image" height=50px width=50px\>
+            <input type="file" accept="image/*" onchange="preview_image(event)">
+        </div>
+
         <div class="controls-container">
 
-            
+
             <div class="canvas-container">
                 <canvas id="my-canvas" height="450" width="450" onclick="draw(event)"></canvas>
             </div>
-            
+
             <aside class="controls">
                 <h3>controls</h3>
                 <input class="meme-text" type="text" placeholder="enter your meme here">
                 <button onclick="onAddText()" class="btn">➕</button>
-            </br>
+                </br>
                 <button onclick="onMoveText(this)" class="btn-up">⬆️</button>
                 <button onclick="onMoveText(this)" class="btn-down">⬇️</button>
                 <button onclick="onDelete(this)" class="btn-down">🗑️</button>
                 <button onclick="onChangeFontSize(this)" class="btn-down">A+</button>
                 <button onclick="onChangeFontSize(this)" class="btn-down">A-</button>
                 <input onchange="onColorTextChange(this)" type="color" name="" id="" class="inpt-color">
-        </br>
-        <button onclick="onSave(this)" class="btn-down">save</button>
-        <button onclick="onSave(this)" class="btn-down">download</button>
-        
+                </br>
+                <button onclick="onSave(this)" class="btn-down">save</button>
+                <button onclick="onSave(this)" class="btn-down">download</button>
 
 
-                
+
+
             </aside>
         </div>
     </section>
@@ -65,6 +73,7 @@
     <script src="/main-js/meme-service.js"></script>
     <script src="/main-js/meme-controller.js"></script>
     <script src="/main-js/storage.js"></script>
+    <script src="/main-js/uplodimg.js"></script>
 </body>
 
 </html>

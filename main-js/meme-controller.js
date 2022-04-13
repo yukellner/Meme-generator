@@ -1,6 +1,9 @@
 var gCtx;
 var gY = [50, 200, 400]
 var gI = 0
+var gUploadedUrl;
+
+
 function init() {
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
@@ -9,8 +12,7 @@ function init() {
     addListeners()
 
     renderGallery()
-
-    renderMeme()
+    //renderMeme()
 
     // const showmimg = getimg(idx)
 
@@ -30,16 +32,19 @@ function init() {
     // click on canvas
 }
 
+
+
 function renderMeme() {
 
     const selectedImg = getSelectedImg()
+    console.log('selectedImg', selectedImg)
     drawImg(selectedImg)
     drawText()
 
 
 }
 
-function renderGallery(){
+function renderGallery() {
 
     createImgs()
     const imgs = getGimgs()
@@ -51,9 +56,9 @@ function renderGallery(){
         elGallery.innerHTML += `<img src="${img.url}" id="${img.id}" onclick="selectImg(this)" alt="" class="image-gallery">`
 
     })
-    
 
-    
+
+
 
 
     // <img src="/imgs/1.jpg" id="1" onclick="selectImg(this)" alt="" class="image-gallery">
@@ -145,16 +150,16 @@ function drawText(txt, x = gElCanvas.width / 2) {
     gCtx.textAlign = 'center';
     // gCtx.lineWidth = 2;
     //gCtx.font = '50px ariel';
-    
+
     var memes = getGmemes()
-    
+
     console.log('memes', memes)
-    
+
     console.log('gCtx', gCtx)
-    
+
     memes.lines.forEach(memeLine => {
-        
-        
+
+
         gCtx.font = `${memeLine.size}px serif`;
         gCtx.strokeStyle = memeLine.color;
         if (memeLine.isMarked === true) {
@@ -203,24 +208,23 @@ function selectImg(image) {
 
 function drawImg(image) {
 
+    var elUploadImg = document.querySelector('.upload-img')
+    elUploadImg.style.display = 'none'
+
     var elImg = document.querySelector('.hidden-img')
-    elImg.src = `/imgs/${image.id}.jpg`
+
+    if (image.id === 19) elImg.src = gUploadedUrl
+    else elImg.src = `/imgs/${image.id}.jpg`
+    // 
+
+    console.log('gUploadedUrl', gUploadedUrl)
+
     console.log('image', elImg.src)
-    // Naive approach:
-    // there is a risk that image is not loaded yet and nothing will be drawn on canvas
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    // drawLine(50, 50)
 
 
 
-    // console.log('elImg',elImg)
-    // console.log('elImg.src',elImg.src)
-    // elImg.src = image.url
-    // elImg.style.display = 'none'
 
-
-    //gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
-    // drawLine(50, 50)
 }
 
 function drawImg2() {
@@ -253,10 +257,10 @@ function onDelete() {
     renderMeme()
 }
 
-function onChangeFontSize(btn){
+function onChangeFontSize(btn) {
 
     if (btn.innerHTML === 'A+') dif = 5
-    else dif =-5
+    else dif = -5
 
 
     var markedLine = getMarkedText()
@@ -276,7 +280,7 @@ function getMarkedText() {
 
 }
 
-function onColorTextChange(inpt){
+function onColorTextChange(inpt) {
     var markedLine = getMarkedText()
     markedLine.color = inpt.value
 
@@ -285,5 +289,5 @@ function onColorTextChange(inpt){
 
 
 
-    
+
 }

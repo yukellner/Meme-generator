@@ -1,6 +1,9 @@
 var gElCanvas;
 var gCtx;
 
+const STORAGE_KEY = 'memesDB'
+
+
 var gImgs = []
 
 var gMeme = {
@@ -8,6 +11,10 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: []
 }
+
+function _saveMemesToStorage() {
+    saveToStorage(STORAGE_KEY, gMeme)
+  }
 
 function createImgs() {
 
