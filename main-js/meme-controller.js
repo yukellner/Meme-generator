@@ -3,6 +3,7 @@ var gY = [50, 200, 400]
 var gI = 0
 var gUploadedUrl;
 var gResSearch;
+var gStartPos;
 
 
 function init() {
@@ -39,7 +40,6 @@ function init() {
 function renderMeme() {
 
     const selectedImg = getSelectedImg()
-    console.log('selectedImg', selectedImg)
     drawImg(selectedImg)
 
     setTimeout(function () {
@@ -113,8 +113,7 @@ function renderGallery() {
     if(gResSearch) var imgs = gResSearch
     else var imgs = getGimgs()
 
-    console.log('gResSearch',gResSearch)
-    console.log('getGimgs()',getGimgs())
+    
 
     var elGallery = document.querySelector('.gallery')
 
@@ -144,30 +143,57 @@ function addListeners() {
 }
 
 function addTouchListeners() {
-    //gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchmove', onMove)
     gElCanvas.addEventListener('touchstart', onDown)
-    //gElCanvas.addEventListener('touchend', onUp)
+    gElCanvas.addEventListener('touchend', onUp)
 }
 
 function addMouseListeners() {
-    // gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mousedown', onDown)
-    //  gElCanvas.addEventListener('mouseup', onUp)
+     gElCanvas.addEventListener('mouseup', onUp)
+}
+
+
+function onMove(ev) {
+    const line = getMarkedText()
+    if (!line.isDrag) return
+   // line.isMarked = false
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(line, dx, dy)
+    gStartPos = pos
+    renderMeme()
+    console.log('line', line)
+}
+
+function moveLine(line, dx, dy) {
+    line.x += dx
+    line.y += dy
+    renderMeme()
+}
+
+function onUp() {
+    const line = getMarkedText()
+   // console.log('line',line)
+    line.isDrag = false
+    //document.body.style.cursor = 'grab'
 }
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    console.log(pos)
-
-
+    gStartPos = pos
     const memes = getGmemes()
-
     const currText = memes.lines.find(memeLine => {
         const textPos = getTextLineSize(memeLine)
-
-        if (pos.x > textPos.x && pos.x < textPos.x + textPos.width && pos.y > textPos.y && pos.y < textPos.y + textPos.height) memeLine.isMarked = true
+        console.log('textPos',textPos)
+        if (pos.x > textPos.x && pos.x < textPos.x + textPos.width && pos.y > textPos.y && pos.y < textPos.y + textPos.height) {
+            
+        memeLine.isMarked = true
+        memeLine.isDrag = true
+        }
         else memeLine.isMarked = false
-
         renderMeme()
     })
 
@@ -217,7 +243,7 @@ function onAddText() {
 }
 
 
-function drawText(txt, x = gElCanvas.width / 2) {
+function drawText() {
     gCtx.shadowColor = "black";
     // gCtx.fillText(txt, x, y);
     gCtx.textBaseline = 'middle';
@@ -227,9 +253,11 @@ function drawText(txt, x = gElCanvas.width / 2) {
 
     var memes = getGmemes()
 
-    console.log('memes', memes)
+    
+    
 
-    console.log('gCtx', gCtx)
+    
+    
 
     memes.lines.forEach(memeLine => {
 
@@ -237,7 +265,6 @@ function drawText(txt, x = gElCanvas.width / 2) {
         gCtx.font = `${memeLine.size}px serif`;
         gCtx.strokeStyle = memeLine.color;
         if (memeLine.isMarked === true) {
-            console.log('gCtx.measureText(memeLine.txt).width', +gCtx.measureText(memeLine.txt).width)
             const textPos = getTextLineSize(memeLine)
             gCtx.strokeRect(textPos.x, textPos.y, textPos.width, textPos.height);
 
@@ -247,9 +274,9 @@ function drawText(txt, x = gElCanvas.width / 2) {
 
         gCtx.fillStyle = memeLine.color;
         gCtx.shadowColor = "yellow";
-        gCtx.fillText(memeLine.txt, x, memeLine.y);
+        gCtx.fillText(memeLine.txt, memeLine.x, memeLine.y);
         // gCtx.fillRect( x, memeLine.y, width, height).
-        gCtx.strokeText(memeLine.txt, x, memeLine.y);
+        gCtx.strokeText(memeLine.txt, memeLine.x, memeLine.y);
 
     })
 
@@ -261,7 +288,7 @@ function drawText(txt, x = gElCanvas.width / 2) {
 }
 function getTextLineSize(memeLine) {
     const textPos = {
-        x: gElCanvas.width / 2 - +gCtx.measureText(memeLine.txt).width / 2,
+        x: memeLine.x - +gCtx.measureText(memeLine.txt).width / 2,
         y: memeLine.y - 15,
         width: +gCtx.measureText(memeLine.txt).width,
         height: 30
@@ -295,7 +322,6 @@ function drawImg(image) {
     // 
 
 
-    console.log('elImg', elImg)
 
     setTimeout(function () {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
@@ -308,13 +334,7 @@ function drawImg(image) {
 
 }
 
-function drawImg2() {
-    var img = new Image();
-    img.src = 'img/1.jpg';
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-    };
-}
+
 
 function onMoveText(btn) {
 
@@ -325,6 +345,7 @@ function onMoveText(btn) {
     else dif = 10
 
     var markedLine = getMarkedText()
+    console.log('markedLine',markedLine)
     markedLine.y = markedLine.y + dif
     renderMeme()
 

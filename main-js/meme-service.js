@@ -96,10 +96,13 @@ function addLine(txt) {
     var line = {
 
         txt: txt,
-        y: gElCanvas.height / 2, size: 20,
+        y: gElCanvas.height / 2, 
+        x: gElCanvas.width / 2,
+        size: 20,
         align: 'left',
         color: 'blue',
-        isMarked: false
+        isMarked: false,
+        isDrag: false
     }
 
     gMeme.lines.push(line)
