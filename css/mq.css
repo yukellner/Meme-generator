@@ -1,5 +1,9 @@
 @media (max-width: 500px) {
 
+    * {
+        box-sizing: border-box;
+    }
+
 
     .controls-container{
     flex-direction: column;

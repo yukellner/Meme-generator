@@ -1,5 +1,26 @@
 
+* {
+    box-sizing: border-box !important;
+}
+*, *:before, *:after {
 
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    -ms-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+  }
+
+  *, *:before, *:after {
+	margin: 0;
+	padding: 0;
+
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	-ms-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+body {
+    overflow-x: hidden  }
 
 
 
