@@ -4,6 +4,7 @@ var gI = 0
 var gUploadedUrl;
 var gResSearch;
 var gStartPos;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 
 function init() {
@@ -215,14 +216,14 @@ function getEvPos(ev) {
         x: ev.offsetX,
         y: ev.offsetY
     }
-    // if (gTouchEvs.includes(ev.type)) {
-    //     ev.preventDefault()
-    //     ev = ev.changedTouches[0]
-    //     pos = {
-    //         x: ev.pageX - ev.target.offsetLeft,
-    //         y: ev.pageY - ev.target.offsetTop
-    //     }
-    // }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft,
+            y: ev.pageY - ev.target.offsetTop
+        }
+    }
     return pos
 }
 
