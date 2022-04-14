@@ -1,6 +1,7 @@
-@import url('/../css/mq.css');
-@import url('/../css/fonts.css');
+@import url('/css/mq.css');
+@import url('/css/fonts.css');
 @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Lato:wght@100&display=swap');
-@import url('/../css/helper.css');
-@import url('/../css/layout.css');
-@import url('/../css/main.css');
+@import url('/css/helper.css');
+@import url('/css/layout.css');
+@import url('/css/main.css');
+
