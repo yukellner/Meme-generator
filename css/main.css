@@ -19,8 +19,9 @@
 	-ms-box-sizing: border-box !important;
 	box-sizing: border-box !important;
 }
-body {
-    overflow-x: hidden  }
+body ,html {
+    overflow-x: hidden ;
+ }
 
 
 

@@ -4,13 +4,18 @@
         box-sizing: border-box;
     }
 
+    body {
+        overflow-x: hidden;
+    }
 
-    .controls-container{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
+
+    .controls-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
     .closeX {
         /* display: block;
         position: fixed;
@@ -36,12 +41,12 @@
 
     }
 
-    .hamburger{
+    .hamburger {
         display: flex;
         cursor: pointer !important;
-        
+
     }
-    
+
     .btn-menu {
         cursor: pointer !important;
         background-color: #ff7f00;
