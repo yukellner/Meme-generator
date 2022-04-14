@@ -285,7 +285,7 @@ function drawImg(image) {
     // console.log('gUploadedUrl', gUploadedUrl)
 
     if (image.id === 19) elImg.src = gUploadedUrl
-    else elImg.src = `/imgs/${image.id}.jpg`
+    else elImg.src = `imgs/${image.id}.jpg`
     // 
 
 
