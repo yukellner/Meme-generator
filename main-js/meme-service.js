@@ -31,6 +31,10 @@ function createImgs() {
 
     }
 
+    gImgs[2].keywords.push('yellow')
+
+    renderGallery()
+
 }
 
 function getGimgs() {

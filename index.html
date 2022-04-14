@@ -5,38 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>Yuval</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>test</title>
 </head>
 
 <body onload="init()">
 
     <header class="head">
-        <div class="logo"></div>
+        <div class="logo">
+            <img src="/imgs/LOGO.png" alt="">
+        </div>
+        <div class="non-click"></div>
+        <div class="hamburger">
+
+            <button class="btn-menu" onclick="toggleMenu()">☰</button>
+        </div>
         <nav class="nav-bar">
-            <list>
-                <ul><a onclick="showGalery()">gallery</a></ul>
-                <ul><a onclick="hideGallery()">editor</a></ul>
-            </list>
+            <ul class="main-nav">
+                <li >
+                    <a class="closeX" onclick="toggleMenu()" class="closeX" onclick="toggleMenu()">X</a></li>
+                <li>
+                    <a onclick="showGalery()">gallery</a>
+                </li>
+                <li>
+                    <div class="Seperator"></div>
+                </li>
+                <li>
+                    <a onclick="hideGallery()">editor</a>
+                </li>
+            </ul>
         </nav>
     </header>
 
 
 
 
-    <section class="gallery grid">
-        <input type="">
-        <button onclick="onSave(this)" class="btn-down">upload</button>
-        <h3>gallery</h3>
+    <section class="gallery-real">
+        <input type=""  placeholder="search for = 'yellow' " class="search-inpt">
+        <button onclick="onSearch(this.value)" class="btn-down">search</button>
+        <div class="gallery grid">
+
+        </div>
+
 
     </section>
 
     <section class="meme-editor">
 
-        <h3>meme-editor</h3>
         <!-- upload img -->
         <div class="upload-img">
-            <img id="output_image" height=50px width=50px\>
+            
+            <img id="output_image" height=50px width=50px alt="" style="display: none;">
             <input type="file" accept="image/*" onchange="preview_image(event)">
         </div>
 
@@ -44,7 +63,7 @@
 
 
             <div class="canvas-container">
-                <canvas id="my-canvas" height="450" width="450" onclick="draw(event)"></canvas>
+                <canvas id="my-canvas" height="250" width="250" onclick="draw(event)"></canvas>
             </div>
 
             <aside class="controls">
@@ -60,7 +79,7 @@
                 <input onchange="onColorTextChange(this)" type="color" name="" id="" class="inpt-color">
                 </br>
                 <button onclick="onSave(this)" class="btn-down">save</button>
-                <button onclick="onSave(this)" class="btn-down">download</button>
+                <button onclick="onDownload(this)" class="btn-down">download</button>
 
 
 
@@ -68,6 +87,8 @@
             </aside>
         </div>
     </section>
+
+    <footer class="fooer"></footer>
 
     <img class="hidden-img" src="/imgs/2.jpg" alt="" style="visibility: hidden;">
 
@@ -78,4 +99,3 @@
 </body>
 
 </html>
-

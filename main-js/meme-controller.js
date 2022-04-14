@@ -2,6 +2,7 @@ var gCtx;
 var gY = [50, 200, 400]
 var gI = 0
 var gUploadedUrl;
+var gResSearch;
 
 
 function init() {
@@ -9,6 +10,7 @@ function init() {
     gCtx = gElCanvas.getContext('2d');
     document.querySelector('.gallery').style.display = 'block'
     document.querySelector('.meme-editor').style.display = 'none'
+    createImgs()
     addListeners()
 
     renderGallery()
@@ -39,15 +41,65 @@ function renderMeme() {
     const selectedImg = getSelectedImg()
     console.log('selectedImg', selectedImg)
     drawImg(selectedImg)
-    drawText()
+
+    setTimeout(function () {
+        drawText()
+
+    }, 10);
 
 
 }
 
+function onDownload(){
+    
+        var link = document.createElement('a');
+        link.download = 'filename.png';
+        link.href = document.getElementById('#my-canvas').toDataURL()
+        link.click();
+      
+}
+
+function onSearch(){
+    var searchKey = document.querySelector('.search-inpt').value
+    if(!searchKey) return
+        
+        
+     
+        
+
+    var elGallery = document.querySelector('.gallery')
+    elGallery.innerHTML = ''
+    gResSearch = undefined
+    // console.log('gResSearch',gResSearch)
+    gResSearch = []
+    
+    gImgs.forEach(img => {
+        img.keywords.find(key => {
+            if(key === searchKey) gResSearch.push(img)
+            console.log('gResSearch',gResSearch)
+        })
+
+    })
+
+    if(!gResSearch[0]) gResSearch = null
+
+    renderGallery()
+}
+
+function toggleMenu() {
+    var navBar = document.querySelector('.nav-bar')
+    navBar.classList.toggle("menu-open");
+}
+
 function renderGallery() {
 
-    createImgs()
-    const imgs = getGimgs()
+    
+
+    if(gResSearch) var imgs = gResSearch
+    else var imgs = getGimgs()
+
+    console.log('gResSearch',gResSearch)
+    console.log('getGimgs()',getGimgs())
 
     var elGallery = document.querySelector('.gallery')
 
@@ -128,12 +180,13 @@ function getEvPos(ev) {
 }
 
 function showGalery() {
-    document.querySelector('.gallery').style.display = 'block'
+    document.querySelector('.gallery-real').style.display = 'block'
     document.querySelector('.meme-editor').style.display = 'none'
+
 }
 
 function hideGallery() {
-    document.querySelector('.gallery').style.display = 'none'
+    document.querySelector('.gallery-real').style.display = 'none'
     document.querySelector('.meme-editor').style.display = 'block'
 }
 
@@ -182,6 +235,8 @@ function drawText(txt, x = gElCanvas.width / 2) {
     if (gI === 2) gI = 0
     else gI++
 
+
+
 }
 function getTextLineSize(memeLine) {
     const textPos = {
@@ -209,18 +264,23 @@ function selectImg(image) {
 function drawImg(image) {
 
     var elUploadImg = document.querySelector('.upload-img')
-    elUploadImg.style.display = 'none'
+    //elUploadImg.style.display = 'none'
 
     var elImg = document.querySelector('.hidden-img')
+    // console.log('gUploadedUrl', gUploadedUrl)
 
     if (image.id === 19) elImg.src = gUploadedUrl
     else elImg.src = `/imgs/${image.id}.jpg`
     // 
 
-    console.log('gUploadedUrl', gUploadedUrl)
 
-    console.log('image', elImg.src)
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+    console.log('elImg', elImg)
+
+    setTimeout(function () {
+        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height);
+
+    }, 1);
+
 
 
 

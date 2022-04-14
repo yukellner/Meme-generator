@@ -18,6 +18,11 @@ function preview_image(event) {
         
         var imgs = getGimgs()
         imgs.push(uploadedImg)
+        var elIpmpt = document.querySelector('.upload-img')
+        elIpmpt.style.display = 'none'
+
+        console.log('elIpmpt',elIpmpt)
+        
         renderMeme()
         
     }
