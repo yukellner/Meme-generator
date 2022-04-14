@@ -1,16 +1,12 @@
 @media (max-width: 500px) {
 
-    * {
-        box-sizing: border-box;
-    }
+    
 
     .head {
         height: 3rem;
     }
 
-    body {
-        overflow-x: hidden;
-    }
+    
 
 
     .controls-container {
