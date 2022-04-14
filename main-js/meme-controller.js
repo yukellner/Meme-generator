@@ -134,13 +134,19 @@ function renderGallery() {
 
 function addListeners() {
     addMouseListeners()
-    // addTouchListeners()
+    addTouchListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
         const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
         createCircle(center)
         renderCanvas()
     })
+}
+
+function addTouchListeners() {
+    //gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    //gElCanvas.addEventListener('touchend', onUp)
 }
 
 function addMouseListeners() {
@@ -279,7 +285,7 @@ function selectImg(image) {
 function drawImg(image) {
 
     var elUploadImg = document.querySelector('.upload-img')
-    //elUploadImg.style.display = 'none'
+    elUploadImg.style.display = 'none'
 
     var elImg = document.querySelector('.hidden-img')
     // console.log('gUploadedUrl', gUploadedUrl)
