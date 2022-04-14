@@ -18,12 +18,17 @@
     
 }
 
+
+#footer-logo{
+    height: 100px;
+    max-width: 80%;
+} 
+
 .logo{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .logo img{
     height: 80%;
     margin-left: 10px;
