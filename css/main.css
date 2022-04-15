@@ -24,7 +24,14 @@ body {
 #footer-logo{
     height: 100px;
     max-width: 80%;
+    
 } 
+
+.footer-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 .img-logo{
@@ -81,6 +88,10 @@ body {
     align-items: center;
     background-color: #ff7f00;
     
+}
+
+.search-inpt{
+    margin: 5px;
 }
 
 
