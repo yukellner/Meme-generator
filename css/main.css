@@ -26,11 +26,7 @@
     max-width: 80%;
 } 
 
-.logoo{
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
+
 .img-logo{
     height: 80%;
     margin-left: 10px;
@@ -38,9 +34,7 @@
 
 
 
-/* #my-canvas{
-    margin: 5% 5% 5% 5%;
-} */
+
 
 
 
@@ -84,6 +78,7 @@
     /* padding: 0.53125rem 1.5625rem 0.10625rem 1.53125rem; */
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #ff7f00;
     
 }
