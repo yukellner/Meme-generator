@@ -1,7 +1,7 @@
 
-/* body {
+body {
     box-sizing: border-box;
- } */
+ }
 
 
 
@@ -28,7 +28,7 @@
 
 
 .img-logo{
-    height: 80%;
+    height: 50%;
     margin-left: 10px;
 }
 

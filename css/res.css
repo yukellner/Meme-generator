@@ -45,6 +45,7 @@
     .hamburger {
         display: flex;
         cursor: pointer !important;
+        height: 100%;
 
     }
 
