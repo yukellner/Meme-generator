@@ -27,9 +27,9 @@
 } 
 
 .logoo{
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 .img-logo{
     height: 80%;
