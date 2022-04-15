@@ -13,7 +13,7 @@ function init() {
     document.querySelector('.gallery').style.display = 'block'
     document.querySelector('.meme-editor').style.display = 'none'
     createImgs()
-    // addListeners()
+    addListeners()
 
     renderGallery()
     //renderMeme()
