@@ -1,5 +1,12 @@
 @media (max-width: 500px) {
 
+    .btn{
+        font-size: 30px;
+    }
+
+    .inpt{
+        height: 20px;
+    }
     
 
     .main-head {
