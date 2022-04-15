@@ -135,12 +135,12 @@ function renderGallery() {
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-        createCircle(center)
-        renderCanvas()
-    })
+    // window.addEventListener('resize', () => {
+    //     // resizeCanvas()
+    //     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+    //     //createCircle(center)
+    //     renderCanvas()
+    // })
 }
 
 function addTouchListeners() {
