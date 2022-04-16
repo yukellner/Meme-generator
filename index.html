@@ -12,19 +12,20 @@
 <body onload="init()">
 
     <div class="main-head">
-        
-            <img class="img-logo" src="imgs/LOGO.jpg" alt="">
-        
+
+        <img class="img-logo" src="imgs/LOGO.jpg" alt="">
+
         <div class="non-click"></div>
         <div class="hamburger">
-            
+
             <button class="btn-menu" onclick="toggleMenu()">☰</button>
             <!-- <img class="btn-menu" src="imgs/Hamburger_icon.svg.png" onclick="toggleMenu()" alt=""> -->
         </div>
         <nav class="nav-bar">
             <ul class="main-nav">
-                <li >
-                    <a class="closeX" onclick="toggleMenu()" class="closeX" onclick="toggleMenu()">X</a></li>
+                <li>
+                    <a class="closeX" onclick="toggleMenu()" class="closeX" onclick="toggleMenu()">X</a>
+                </li>
                 <li>
                     <a onclick="showGalery()">gallery</a>
                 </li>
@@ -42,7 +43,7 @@
 
 
     <section class="gallery-real">
-        <input type=""  placeholder="search for = 'yellow' " class="search-inpt">
+        <input type="" placeholder="search for = 'yellow' " class="search-inpt">
         <button onclick="onSearch(this.value)" class="btn-down">search</button>
         <div class="gallery grid">
 
@@ -55,7 +56,7 @@
 
         <!-- upload img -->
         <div class="upload-img">
-            
+
             <img id="output_image" height=50px width=50px alt="" style="display: none;">
             <input type="file" accept="image/*" onchange="preview_image(event)">
         </div>
@@ -64,21 +65,21 @@
 
 
             <div class="canvas-container">
-                <canvas id="my-canvas" height="275.5" width="270.5" ></canvas>
+                <canvas id="my-canvas" height="275.5" width="270.5"></canvas>
             </div>
 
             <aside class="controls">
-               
+
                 <input class="inpt meme-text" type="text" placeholder="enter your meme here">
                 <button onclick="onAddText()" class="btn">➕</button>
                 </br>
-                
+
                 <button onclick="onMoveText(this)" class="btn btn-up">⬆️</button>
                 <button onclick="onMoveText(this)" class="btn btn-down">⬇️</button>
                 <button onclick="onDelete(this)" class="btn btn-down">🗑️</button>
                 <button onclick="onChangeFontSize(this)" class="btn btn-down">A+</button>
                 <button onclick="onChangeFontSize(this)" class="btn btn-down">A-</button>
-            </br>
+                </br>
                 <input onchange="onColorTextChange(this)" type="color" name="" id="" class="inpt inpt-color">
                 </br>
                 <button onclick="onSave(this)" class="btn btn-down">save</button>
@@ -92,10 +93,10 @@
     </section>
 
     <footer class="fooer footer-logo">
-    
-       
-            <img id="footer-logo" src="imgs/LOGO.jpg" alt="">
-        
+
+
+        <img id="footer-logo" src="imgs/LOGO.jpg" alt="">
+
     </footer>
 
     <img class="hidden-img" src="imgs/2.jpg" alt="" style="visibility: hidden; display: none;">
